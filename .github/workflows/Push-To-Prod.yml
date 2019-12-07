@@ -40,26 +40,29 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
 
     # Build the Docker images
-    - name: Build Docker Images 
-      run: |        
-        $GITHUB_WORKSPACE/builder/docker-build.sh
+    #- name: Build Docker Images 
+    #  run: |        
+    #    $GITHUB_WORKSPACE/builder/docker-build.sh
 
     # Push the Docker images
-    - name: Push Docker Images 
-      run: |        
-        $GITHUB_WORKSPACE/builder/docker-push.sh
+    #- name: Push Docker Images 
+    # run: |        
+    #    $GITHUB_WORKSPACE/builder/docker-push.sh
 
     
     # Update Deployment Configs
     - name: Update Deployment Configs
       run: |        
         $GITHUB_WORKSPACE/builder/deploy-update.sh
-
-    - name: Commit New Deployment Config
-      uses: github-actions-x/commit@v2.1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: 'master'
-        commit-message: 'deployment update'
-        force-add: 'true'
-        files: deployment/
+        
+    - name: Commit changes # This is the step name that will be displayed in your runs
+      uses: EndBug/add-and-commit@v2.1.1 # You can change this to use a specific version
+      with: # See more info about inputs below
+        author_name: Aly
+        author_email: no@thanks.com
+        message: "Deployment Update"
+        path: "deplyoment"
+        pattern: "*.yaml"
+        force: false
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
