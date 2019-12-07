@@ -61,7 +61,7 @@ jobs:
         author_name: Aly
         author_email: no@thanks.com
         message: "Deployment Update"
-        path: "deplyoment"
+        path: "deplyoment/"
         pattern: "*.yaml"
         force: false
     env:
