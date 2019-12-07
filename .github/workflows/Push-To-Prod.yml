@@ -67,8 +67,8 @@ jobs:
         author_name: Aly
         author_email: no@thanks.com
         message: "Deployment Update"
-        path: "deplyoment/"
-        pattern: "*.yaml"
+        path: "/"
+        pattern: "*"
         force: false
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
