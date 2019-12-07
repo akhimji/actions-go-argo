@@ -1,0 +1,54 @@
+name: Push-To-Prod
+on:
+  push:
+    branches:    
+      - master
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+  
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Set up Go 1.13
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+      id: go
+
+    - name: Get dependencies
+      run: |
+        go get -v -t -d ./...
+        if [ -f Gopkg.toml ]; then
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            dep ensure
+        fi
+
+    - name: Build/Test
+      run: go build -v ./...
+
+    - name: Docker Registry
+      env:
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
+
+    # Build the Docker images
+    - name: Build Docker Images 
+      run: |        
+        $GITHUB_WORKSPACE/builder/docker-build.sh
+
+    # Push the Docker images
+    - name: Push Docker Images 
+      run: |        
+        $GITHUB_WORKSPACE/builder/docker-push.sh
+
+    
+    # Update Deployment Configs
+    - name: Update Deployment Configs For Services
+      run: |        
+        $GITHUB_WORKSPACE/builder/deploy-update.sh

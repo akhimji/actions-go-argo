@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-ui
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: go-web-ui
+  template:
+    metadata:
+      labels:
+        name: go-web-ui
+    spec:
+      containers:
+      - name: go-web-ui
+        image: <IMAGE-UI>
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-dadjoke
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: go-web-dadjoke
+  template:
+    metadata:
+      labels:
+        name: go-web-dadjoke
+    spec:
+      containers:
+      - name: go-web-dadjoke
+        image: <IMAGE-DJ>
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-beer
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: go-web-beer
+  template:
+    metadata:
+      labels:
+        name: go-web-beer
+    spec:
+      containers:
+      - name: go-web-beer
+        image: <IMAGE-BEER>
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
