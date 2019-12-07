@@ -30,14 +30,14 @@ jobs:
             dep ensure
         fi
 
-    - name: Build/Test
-      run: go build -v ./...
+    #- name: Build/Test
+    #  run: go build -v ./...
 
-    - name: Docker Registry
-      env:
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
+#    - name: Docker Registry
+#      env:
+#        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+#        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
 
     # Build the Docker images
     #- name: Build Docker Images 
@@ -67,7 +67,7 @@ jobs:
         author_name: Aly
         author_email: no@thanks.com
         message: "Deployment Update"
-        path: $GITHUB_WORKSPACE/deployment/
+        path: "/home/runner/work/actions-go-argo/actions-go-argo/deployment"
         pattern: "*"
         force: false
     env:
