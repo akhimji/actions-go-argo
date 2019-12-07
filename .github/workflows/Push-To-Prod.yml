@@ -67,7 +67,7 @@ jobs:
         author_name: Aly
         author_email: no@thanks.com
         message: "Deployment Update"
-        path: "/"
+        path: $GITHUB_WORKSPACE/deployment/
         pattern: "*"
         force: false
     env:
