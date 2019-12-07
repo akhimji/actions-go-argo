@@ -49,6 +49,15 @@ jobs:
 
     
     # Update Deployment Configs
-    - name: Update Deployment Configs For Services
+    - name: Update Deployment Configs
       run: |        
         $GITHUB_WORKSPACE/builder/deploy-update.sh
+
+    - name: Commit New Deployment Config
+      uses: github-actions-x/commit@v2.1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        push-branch: 'master'
+        commit-message: 'deployment update'
+        force-add: 'true'
+        files: deployment/
