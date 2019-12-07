@@ -30,26 +30,25 @@ jobs:
             dep ensure
         fi
 
-    #- name: Build/Test
-    #  run: go build -v ./...
+    - name: Build/Test
+      run: go build -v ./...
 
-#    - name: Docker Registry
-#      env:
-#        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-#        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-#      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
+    - name: Docker Registry
+      env:
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
 
     # Build the Docker images
-    #- name: Build Docker Images 
-    #  run: |        
-    #    $GITHUB_WORKSPACE/builder/docker-build.sh
+    - name: Build Docker Images 
+      run: |        
+        $GITHUB_WORKSPACE/builder/docker-build.sh
 
     # Push the Docker images
-    #- name: Push Docker Images 
-    # run: |        
-    #    $GITHUB_WORKSPACE/builder/docker-push.sh
+    - name: Push Docker Images 
+      run: |        
+        $GITHUB_WORKSPACE/builder/docker-push.sh
 
-    
     # Update Deployment Configs
     - name: Update Deployment Configs
       run: |        
@@ -59,7 +58,6 @@ jobs:
     - name: Status Update
       run: |        
         cat $GITHUB_WORKSPACE/deployment/deployment.yaml
-
 
     - name: Commit changes # This is the step name that will be displayed in your runs
       uses: EndBug/add-and-commit@v2.1.1 # You can change this to use a specific version
