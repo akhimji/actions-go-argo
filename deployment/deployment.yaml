@@ -15,53 +15,30 @@ spec:
     spec:
       containers:
       - name: go-web-ui
-        image: r00tsh3ll/actionsgo-dadjoke:e7bf642
+        image: r00tsh3ll/actionsgo-ui:05b84d9
         imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 3000
----
+          - containerPort: 3000---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-web-dadjoke
+  name: go-web-beer
 spec:
   replicas: 3
   selector:
     matchLabels:
-      name: go-web-dadjoke
+      name: go-web-beer
   template:
     metadata:
       labels:
-        name: go-web-dadjoke
+        name: go-web-beer
     spec:
       containers:
-      - name: go-web-dadjoke
-        image: r00tsh3ll/actionsgo-dadjoke:e7bf642
+      - name: go-web-beer
+        image: r00tsh3ll/actionsgo-randombeer:05b84d9
         imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 3000
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-web-randombeer
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      name: go-web-randombeer
-  template:
-    metadata:
-      labels:
-        name: go-web-randombeer
-    spec:
-      containers:
-      - name: go-web-randombeer
-        image: r00tsh3ll/actionsgo-randombeer:e7bf642
-        imagePullPolicy: IfNotPresent
-        ports:
-          - containerPort: 3000
----
+          - containerPort: 3000---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -78,7 +55,27 @@ spec:
     spec:
       containers:
       - name: go-web-simpsons
-        image: r00tsh3ll/actionsgo-simpons:e7bf642
+        image: r00tsh3ll/actionsgo-simpsons:05b84d9
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-dadjoke
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: go-web-dadjoke
+  template:
+    metadata:
+      labels:
+        name: go-web-dadjoke
+    spec:
+      containers:
+      - name: go-web-dadjoke
+        image: r00tsh3ll/actionsgo-dadjoke:05b84d9
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
