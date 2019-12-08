@@ -15,10 +15,11 @@ spec:
     spec:
       containers:
       - name: go-web-ui
-        image: r00tsh3ll/actionsgo-ui:05b84d9
+        image: r00tsh3ll/actionsgo-ui:6516b13
         imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 3000---
+          - containerPort: 3000
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -35,10 +36,11 @@ spec:
     spec:
       containers:
       - name: go-web-beer
-        image: r00tsh3ll/actionsgo-randombeer:05b84d9
+        image: r00tsh3ll/actionsgo-randombeer:6516b13
         imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 3000---
+          - containerPort: 3000
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -55,10 +57,11 @@ spec:
     spec:
       containers:
       - name: go-web-simpsons
-        image: r00tsh3ll/actionsgo-simpsons:05b84d9
+        image: r00tsh3ll/actionsgo-simpsons:6516b13
         imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 3000---
+          - containerPort: 3000
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -75,7 +78,7 @@ spec:
     spec:
       containers:
       - name: go-web-dadjoke
-        image: r00tsh3ll/actionsgo-dadjoke:05b84d9
+        image: r00tsh3ll/actionsgo-dadjoke:6516b13
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
