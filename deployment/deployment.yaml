@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: go-web-ui
-        image: r00tsh3ll/actionsgo-ui:a9af77e
+        image: r00tsh3ll/actionsgo-ui:58defd6
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: go-web-beer
-        image: r00tsh3ll/actionsgo-randombeer:a9af77e
+        image: r00tsh3ll/actionsgo-randombeer:58defd6
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
       - name: go-web-simpsons
-        image: r00tsh3ll/actionsgo-simpsons:a9af77e
+        image: r00tsh3ll/actionsgo-simpsons:58defd6
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
@@ -78,7 +78,7 @@ spec:
     spec:
       containers:
       - name: go-web-dadjoke
-        image: r00tsh3ll/actionsgo-dadjoke:a9af77e
+        image: r00tsh3ll/actionsgo-dadjoke:58defd6
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
